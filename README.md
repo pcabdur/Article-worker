@@ -1,7 +1,6 @@
 <div align="center">
 
-# 🚀 Article Worker
-
+# 🚀 Article Worker  
 **A scalable Node.js worker system for asynchronous article processing**
 
 ![Node.js](https://img.shields.io/badge/Node.js-18.x-green?logo=node.js)
@@ -14,9 +13,12 @@
 
 ## 📌 Overview
 
-**Article Worker** is a background worker system built with **Node.js** that processes article-related tasks asynchronously using a queue-based architecture.
+**Article Worker** is a Node.js background worker that processes article-related tasks asynchronously using a queue-based architecture.
 
-It is designed to handle heavy or time-consuming tasks such as article parsing, validation, storage, or transformation without blocking the main application.
+It offloads heavy operations (parsing, validation, transformation, storage) from the main API so your app stays fast and responsive.
+
+This README contains **everything in one place**:  
+architecture, setup, and **example worker + queue + DB code**.
 
 ---
 
@@ -25,26 +27,28 @@ It is designed to handle heavy or time-consuming tasks such as article parsing, 
 - 🧵 Asynchronous background processing  
 - 📦 Queue-based job handling  
 - 🗄️ Database integration  
-- ⚡ Scalable worker architecture  
-- 🔧 Easy to extend and customize  
+- ⚡ Horizontally scalable workers  
+- 🔧 Easy to extend with new job types  
 
 ---
 
-## 🛠 Tech Stack
+## 🧠 Architecture (High Level)
 
-| Technology | Purpose |
-|---------|--------|
-| **Node.js** | Runtime environment |
-| **Queue System** | Job scheduling & processing |
-| **Database** | Persistent article storage |
 
----
+API / Client
+    ↓
+Add Job to Queue
+    ↓
+Queue (FIFO)
+    ↓
+Worker Process
+    ↓
+Database
+## 📦 Installation
 
-## 📂 Project Structure
+
+-git clone https://github.com/your-username/article-worker.git
+-cd article-worker
+-npm install
 
 ```text
-Article-worker/
-├── worker.js      # Core worker logic
-├── queue.js       # Job queue management
-├── db.js          # Database connection & queries
-├── package.json   # Dependencies & scripts
